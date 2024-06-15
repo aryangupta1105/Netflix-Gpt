@@ -1,8 +1,26 @@
 import { useContext, useEffect } from "react";
 import SignInContext from "../utils/SignInContext";
+import {auth} from "../utils/firebase";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const Header = ()=>{
    const {isSignIn , setIsSignIn} = useContext(SignInContext);
+
+   const navigate = useNavigate();
+   
+    const handleSignOut= ()=>{
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            navigate("/");
+          }).catch((error) => {
+            // An error happened.
+            navigate("/error");
+          });
+    }
+    const user = useSelector((store) => store.user);
 
     return(
         <div className="w-full absolute top-0  bg-gradient-to-b from-black to-transparent h-screen">
@@ -19,6 +37,11 @@ const Header = ()=>{
                     <button className=" ml-5 bg-red-600 hover:bg-red-800 transition-all duration-200 rounded-md px-4 text-white p-1" onClick={()=>setIsSignIn(!isSignIn)}>Sign In</button>
             </div>):null}
                 
+                {user?(<div className="flex items-center ">
+                    <img src="https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png" alt="user-icon" className="h-12 w-12 rounded-full bg-red-600 cursor-pointer"></img>
+                    <p className="text-white p-2 px-4">Hi!.. {user?.displayName}</p>
+                    <button className="ml-3 bg-red-600 hover:bg-red-800 transition-all duration-200 rounded-md h-fit p-1 px-3 text-lg text-white" onClick={handleSignOut}>Sign Out</button>
+                </div>):null}
         </div>
         </div>
     )

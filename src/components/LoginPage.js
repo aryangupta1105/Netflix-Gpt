@@ -2,50 +2,29 @@ import { useRef, useState } from "react";
 import Header from "./Header";
 import SignInContext from "../utils/SignInContext";
 import {checkValidData} from "../utils/Validate";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../utils/firebase";
-import { signIn, signUp } from "../utils/SignUpSignIn";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signIn, signUp ,googleLogin } from "../utils/SignUpSignIn";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import appStore from "../utils/appStore";
+
 
 const LoginPage = ()=>{
     const [isSignIn , setIsSignIn] = useState(false);
-
+    const dispatch = useDispatch(appStore);
     const[errorMessage , setErrorMessage] = useState();
-
+    
     const toggleSignInForm = ()=>{
         setIsSignIn(!isSignIn);
-    }
-
+        }
+        
+        
+    const navigate = useNavigate();
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
 
     const handleGoogleLogin = ()=>{
-        const provider = new GoogleAuthProvider();
-            provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-            auth.languageCode = 'it';
-            // To apply the default browser preference instead of explicitly setting it.
-            // auth.useDeviceLanguage();
-                signInWithPopup(auth, provider)
-                .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                console.log("Sign in using google successful");
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
-                }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                setErrorMessage( errorMessage);
-                // ...
-                });
+        googleLogin(name , setErrorMessage,navigate);
     }
     // how do you fetch data: 1) use state variables.
     // 2) useRef : use refrence of the variable
@@ -60,14 +39,12 @@ const LoginPage = ()=>{
         // Create user / Sign UP:
         if(!isSignIn){
             // sign up function uses createUserWithEmailAndPassword to create a user and setError message if error shows up
-            signUp("Aryan Gupta" , email , password , setErrorMessage)
-            console.log("Sign up successful");
+            signUp(name , email , password , setErrorMessage,navigate ,dispatch)
         }
-        else if(isSignIn){
+        else{
             // it is sign in form:
             // sign In function uses signInUserWithEmailAndPassword to create a user and setError message if error shows up
-            signIn(email , password ,setErrorMessage);
-            console.log("Sign in successful");
+            signIn(name, email , password ,setErrorMessage,navigate);
         }
         }
 
@@ -84,7 +61,7 @@ const LoginPage = ()=>{
 
                 <label for="email" className="text-3xl mb-8 text-white font-bold">{isSignIn?"Sign In" : "Sign Up"}</label>
 
-                {!isSignIn?(<input type="text" placeholder="Enter your name" id="name" name="name" className="p-3 w-full  mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400  qoutline-none bg-[#313434]"/>):null}
+                {!isSignIn?(<input type="text" ref={name} placeholder="Enter your name" id="name" name="name" className="p-3 w-full  mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400  qoutline-none bg-[#313434]"/>):null}
 
                 <input type="text" ref={email}
                  placeholder="Enter your email" id="email" name="Email" className="p-3 w-full mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>

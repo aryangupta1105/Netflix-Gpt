@@ -12,6 +12,14 @@
     Step 11: Firebase deployment
     Step 12: Deploying our app to production
     Step 13: Creating first user / Sign up Account
+    Step 14: Implemented Sign In account
+    Step 15: Implemented Google Sign in
+    Step 16: Setting up our Redux Store
+    Step 17: Created our user Slice
+    Step 18: Implemented sign Out feature 
+    Step 19: Update Profile (adding displayName).
+    Step 20: Fetching movies from TMDB api.
+    
 
 
 # Features: 
