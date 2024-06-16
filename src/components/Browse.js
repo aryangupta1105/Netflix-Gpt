@@ -1,10 +1,16 @@
 import Header from "./Header";
+import useTMDBData from "../hooks/useTMDBData";
+import HeroSection from "./HeroSection";
+import MoviesSection from "./MoviesSection";
+
 
 const Browse = ()=>{
+    useTMDBData();
     return(
-        <div>
+        <div className="">
             <Header/>
-            <p className="text-center  bg-red-500 w-full">Browse</p>
+            <HeroSection/>
+            <MoviesSection/>
         </div>
     )
 }

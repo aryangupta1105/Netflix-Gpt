@@ -2,10 +2,11 @@ import { createUserWithEmailAndPassword ,signInWithEmailAndPassword ,signInWithP
 
 import {auth} from "../utils/firebase";
 import { addUser } from "./userSlice";
+import { userIcon } from "./constants";
 
 
 
-export const signUp = (name , email , password ,setErrorMessage ,navigate , dispatch) =>{
+export const signUp = (name , email , password ,setErrorMessage  , dispatch) =>{
     
     createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             
@@ -18,9 +19,8 @@ export const signUp = (name , email , password ,setErrorMessage ,navigate , disp
                 })
                 .then(() => {
                     // we have to update the user and dispatch the user again after updating
-                    const {uid , email, displayName} = auth.currentUser;
-                    dispatch(addUser({uid: uid , email: email , displayName: displayName}))
-                    navigate("/browse");
+                    const {uid , email, displayName , photoURL} = auth.currentUser;
+                    dispatch(addUser({uid: uid , email: email , displayName: displayName , photoURL: userIcon}))
                 }).catch((error) => {
                     setErrorMessage(error.message);
                 })
@@ -32,15 +32,11 @@ export const signUp = (name , email , password ,setErrorMessage ,navigate , disp
             });
 }
 
-export const signIn = (name , email, password ,setErrorMessage , navigate)=>{
+export const signIn = (name , email, password ,setErrorMessage )=>{
         signInWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user);
-                navigate("/browse");
-
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -49,7 +45,7 @@ export const signIn = (name , email, password ,setErrorMessage , navigate)=>{
             });
 }
 
-export const googleLogin = (name , setErrorMessage , navigate)=>{
+export const googleLogin = ( setErrorMessage)=>{
             const provider = new GoogleAuthProvider();
             provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
             auth.languageCode = 'it';
@@ -63,7 +59,6 @@ export const googleLogin = (name , setErrorMessage , navigate)=>{
                 // The signed-in user info.
                 const user = result.user;
                 console.log("Sign in using google successful");
-                navigate("/browse");
 
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...

@@ -28,27 +28,6 @@ const Body = ()=>{
         }
     ])
 
-    // navigate hook: can't use at the routing level it should be insider router provider
-
-    useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/auth.user
-
-            //this provides other things also like email , displayName , uid;   
-              const {uid , email, displayName} = user;
-              dispatch(addUser({uid: uid, email:email , displayName: displayName}));
-              // ...
-              } else {
-                  // User is signed out
-                  dispatch(removeUser());
-                  // ...
-            }
-          });
-          
-    } , []);
-
     return(
         <div className="">
             <RouterProvider router={appRouter}/>

@@ -3,28 +3,25 @@ import Header from "./Header";
 import SignInContext from "../utils/SignInContext";
 import {checkValidData} from "../utils/Validate";
 import { signIn, signUp ,googleLogin } from "../utils/SignUpSignIn";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import appStore from "../utils/appStore";
+import { googleLogo, loginPageImageUrl } from "../utils/constants";
 
 
 const LoginPage = ()=>{
     const [isSignIn , setIsSignIn] = useState(false);
-    const dispatch = useDispatch(appStore);
+   
     const[errorMessage , setErrorMessage] = useState();
     
     const toggleSignInForm = ()=>{
         setIsSignIn(!isSignIn);
         }
         
-        
-    const navigate = useNavigate();
+
     const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
 
     const handleGoogleLogin = ()=>{
-        googleLogin(name , setErrorMessage,navigate);
+        googleLogin(setErrorMessage);
     }
     // how do you fetch data: 1) use state variables.
     // 2) useRef : use refrence of the variable
@@ -39,25 +36,25 @@ const LoginPage = ()=>{
         // Create user / Sign UP:
         if(!isSignIn){
             // sign up function uses createUserWithEmailAndPassword to create a user and setError message if error shows up
-            signUp(name , email , password , setErrorMessage,navigate ,dispatch)
+            signUp(name , email , password , setErrorMessage )
         }
         else{
             // it is sign in form:
             // sign In function uses signInUserWithEmailAndPassword to create a user and setError message if error shows up
-            signIn(name, email , password ,setErrorMessage,navigate);
+            signIn(name, email , password ,setErrorMessage);
         }
         }
 
         // Now we can sign up /sign In
     return(
-        <div className="relative" >
+        <div className="relative  z-[11]" >
             <SignInContext.Provider value= {{isSignIn:isSignIn , setIsSignIn}}>
                 <Header />
             </SignInContext.Provider>
             <div className="">  
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/cacfadb7-c017-4318-85e4-7f46da1cae88/e43aa8b1-ea06-46a5-abe3-df13243e718d/IN-en-20240603-popsignuptwoweeks-perspective_alpha_website_small.jpg"></img>
+                <img src={loginPageImageUrl}></img>
             </div>
-            <form onSubmit={(e)=>e.preventDefault()} className=" h-fit absolute top-[15%] right-0 left-0 flex flex-col w-[30%] mx-auto bg-black p-10 px-16 bg-opacity-70 rounded-sm">
+            <form onSubmit={(e)=>e.preventDefault()} className=" h-fit absolute top-[15%] right-0 left-0 flex flex-col w-[30%] mx-auto bg-black p-10 px-16 bg-opacity-70 rounded-sm z-[11]">
 
                 <label for="email" className="text-3xl mb-8 text-white font-bold">{isSignIn?"Sign In" : "Sign Up"}</label>
 
@@ -82,7 +79,7 @@ const LoginPage = ()=>{
                 (
                     <div className="w-full items-center flex flex-col"><p className="mx-auto text-center text-white font-bold mt-3 text-xl">or <br/> Login using</p>
                         <button onClick={handleGoogleLogin} className="hover:underline w-fit  p-2 px-6 border mx-auto border-gray-400 mt-5 cursor-pointer text-white font-bold ">
-                            <img src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" className="h-10 w-20">
+                            <img src={googleLogo} className="h-10 w-20">
                             </img>
                         </button>
                     </div>

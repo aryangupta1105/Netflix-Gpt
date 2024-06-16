@@ -1,31 +1,58 @@
 import { useContext, useEffect } from "react";
 import SignInContext from "../utils/SignInContext";
 import {auth} from "../utils/firebase";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
+import { Netflix_Logo , userIcon } from "../utils/constants";
 
 
 const Header = ()=>{
    const {isSignIn , setIsSignIn} = useContext(SignInContext);
 
+   const dispatch = useDispatch();
    const navigate = useNavigate();
    
     const handleSignOut= ()=>{
         signOut(auth).then(() => {
-            // Sign-out successful.
-            navigate("/");
+            // We removed navigate from here because we are navigating now from onAuthStateChanged...
           }).catch((error) => {
-            // An error happened.
-            navigate("/error");
+            
           });
     }
+
+    // We shifted it here because it should be present somewhere which is present everywhere just like Header.js
+        // navigate hook: can't use at the routing level it should be insider router provider
+
+        useEffect(()=>{
+            const unsubscribe = onAuthStateChanged(auth, (user) => {
+                if (user) {
+                  // User is signed in, see docs for a list of available properties
+                  // https://firebase.google.com/docs/reference/js/auth.user
+    
+                //this provides other things also like email , displayName , uid;   
+                  const {uid , email, displayName , photoURL} = user;
+                  dispatch(addUser({uid: uid, email:email , displayName: displayName , photoURL: userIcon}));
+                  navigate("/browse");
+                  // ...
+                  } else {
+                      // User is signed out
+                      dispatch(removeUser());
+                      navigate("/");
+
+                      // ...
+                }
+              });
+              return ()=> unsubscribe();
+        } , []);
+
     const user = useSelector((store) => store.user);
 
     return(
-        <div className="w-full absolute top-0  bg-gradient-to-b from-black to-transparent h-screen">
-            <div className="flex max-w-[1440px] w-10/12 mx-auto justify-between px-8 p-2 items-center">
-                <img src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" className="w-[190px]" loading="lazy"></img>
+        <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10">
+            <div className="flex w-full mx-auto justify-between items-center">
+                <img src={Netflix_Logo} className="w-[190px]" loading="lazy"></img>
                {!isSignIn?(<div className="flex">
                     <div className="px-6 p-1 border bg-transparent rounded-sm  border-gray-400 text-white font-semibold">
                         <select type="search" className="bg-transparent outline-none border-none"  name="choices" >
@@ -38,7 +65,7 @@ const Header = ()=>{
             </div>):null}
                 
                 {user?(<div className="flex items-center ">
-                    <img src="https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png" alt="user-icon" className="h-12 w-12 rounded-full bg-red-600 cursor-pointer"></img>
+                    <img src={userIcon} alt="user-icon" className="h-12 w-12 rounded-full bg-red-600 cursor-pointer"></img>
                     <p className="text-white p-2 px-4">Hi!.. {user?.displayName}</p>
                     <button className="ml-3 bg-red-600 hover:bg-red-800 transition-all duration-200 rounded-md h-fit p-1 px-3 text-lg text-white" onClick={handleSignOut}>Sign Out</button>
                 </div>):null}
