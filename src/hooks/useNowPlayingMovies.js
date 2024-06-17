@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react"
-import { addNowPlayingMovies } from "../utils/moviesSlice";
+import { useEffect } from "react"
+import { addNowPlayingMovies, addPopularMovies , addTopRatedMovies , addUpcomingMovies} from "../utils/moviesSlice";
 import { options } from "../utils/constants";
 import { useDispatch } from "react-redux";
-
-const useTMDBData = ()=>{
+const useNowPlayingMovies = ()=>{
        
         useEffect(()=>{
             getNowPlayingMovies();
@@ -18,7 +17,10 @@ const useTMDBData = ()=>{
             const json = await data.json();
             dispatch(addNowPlayingMovies(json?.results));
         }   
+       
 }
 
-export default useTMDBData;
+export default useNowPlayingMovies;
+
+
 

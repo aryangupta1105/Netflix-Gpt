@@ -1,11 +1,19 @@
 import Header from "./Header";
-import useTMDBData from "../hooks/useTMDBData";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import HeroSection from "./HeroSection";
 import MoviesSection from "./MoviesSection";
+import useTopRatedMovies from "../hooks/useTopRatedMovies";
+import useUpcomingMovies from "../hooks/useUpcomingMovies";
+import usePopularMovies from "../hooks/usePopularMovies";
+import usePopularTVSeries from "../hooks/usePopularTVSeries";
 
 
 const Browse = ()=>{
-    useTMDBData();
+    useNowPlayingMovies();
+    useTopRatedMovies();
+    useUpcomingMovies();
+    usePopularMovies();
+    usePopularTVSeries(); 
     return(
         <div className="">
             <Header/>

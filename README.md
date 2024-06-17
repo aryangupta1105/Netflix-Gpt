@@ -35,7 +35,14 @@
     Step 29: Fetching Data for Trailer Video or Video Background 
     Step 30: Creating custom hook for fetching trailer Video
     Step 31: Embedded the Video using iframe..
-    Step 32: Created Video Trailer inside movie slice 
+    Step 32: Created Video Trailer inside movie slice
+    Step 33: Created Movies Section..
+    Step 34: Fetched data from now playing , top Rated movies , upcoming movies and popular movies
+    Step 35: Created custom hooks for all sections
+    Step 36: Created scroll list for each movie list
+    Step 37: Buid movie Card component :
+            -We created image cdn url from guides in tmdb
+    Step 38: Completed the Netlix part Now will create Gpt search..
     
 
 

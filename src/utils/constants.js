@@ -18,4 +18,6 @@ export const options = {
 
 export const YT_URL = "https://www.youtube.com/embed/";
 
-export const YT_URL_FEATURES = "?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&disablekb=1&rel=0&iv_load_policy=3";
+export const YT_URL_FEATURES = "?autoplay=1&mute=1&controls=0&modestbranding=1&disablekb=1&rel=0&iv_load_policy=3&loop=1";
+
+export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w500";

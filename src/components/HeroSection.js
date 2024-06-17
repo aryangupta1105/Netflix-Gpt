@@ -8,11 +8,11 @@ const HeroSection = ()=>{
     const movies = useSelector((store)=>store.movies?.NowPlayingMovies);
     if(!movies) return;
     const random =Math.floor(Math.random() * (movies.length - 1));
-    const mainMovie = movies[0];
+    const mainMovie = movies[0 ];
     const {original_title , overview , id} = mainMovie;
     console.log(mainMovie);
     return(
-        <div className="overflow-hidden">
+        <div className="overflow-hidden ">
             {/* 
                 -Video Background (comes from store)
                 -Video Title (scale on hover)...
@@ -20,6 +20,7 @@ const HeroSection = ()=>{
              */}
              <VideoTitle title={original_title} overview={overview}/>
              <VideoBackground movie_id={id}/>
+             
         </div>
     )
 };

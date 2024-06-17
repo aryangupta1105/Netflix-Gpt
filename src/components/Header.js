@@ -50,7 +50,7 @@ const Header = ()=>{
     const user = useSelector((store) => store.user);
 
     return(
-        <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10">
+        <div className="absolute w-screen  px-8 py-2 bg-gradient-to-b from-black z-30">
             <div className="flex w-full mx-auto justify-between items-center">
                 <img src={Netflix_Logo} className="w-[190px]" loading="lazy"></img>
                {!isSignIn?(<div className="flex">
