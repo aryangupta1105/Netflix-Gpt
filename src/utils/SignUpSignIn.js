@@ -58,8 +58,7 @@ export const googleLogin = ( setErrorMessage)=>{
                 const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                console.log("Sign in using google successful");
-
+                
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
                 }).catch((error) => {

@@ -3,6 +3,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import moviesReducer from "./moviesSlice";
 import TVSeriesReducer from "./tvSeriesSlice";
+import gptReducer from "./gptSlice";
+import configReducer from "./configSlice";
 
 
 const appStore = configureStore({
@@ -10,6 +12,8 @@ const appStore = configureStore({
         user: userReducer,
         movies: moviesReducer,
         TVSeries: TVSeriesReducer,
+        gpt: gptReducer,
+        config: configReducer,
     },
 });
 

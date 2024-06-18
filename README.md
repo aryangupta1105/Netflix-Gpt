@@ -43,6 +43,10 @@
     Step 37: Buid movie Card component :
             -We created image cdn url from guides in tmdb
     Step 38: Completed the Netlix part Now will create Gpt search..
+    Step 39: Created GPT Search Page
+    Step 40: Created GPT Search Bar
+    Step 41: Created MultiLanguage Sign Up Page 
+    Step 42: Integrating GPT Api in our app
     
 
 
@@ -50,6 +54,8 @@
     -Login / Sign Up:
         - Sign In / Sign Up Form 
         - redirect to Browse Page
+        - MultiLanguage Sign Up Page 
+
 # (When LoggedIn):
     - Browse (after Authentication)
         -Header

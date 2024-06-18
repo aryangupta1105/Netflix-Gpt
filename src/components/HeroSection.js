@@ -10,7 +10,6 @@ const HeroSection = ()=>{
     const random =Math.floor(Math.random() * (movies.length - 1));
     const mainMovie = movies[0 ];
     const {original_title , overview , id} = mainMovie;
-    console.log(mainMovie);
     return(
         <div className="overflow-hidden ">
             {/* 

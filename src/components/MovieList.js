@@ -1,5 +1,6 @@
 import MovieCard from "./MovieCard";
 import "./MovieList.css";
+import Shimmer from "./Shimmer";
 const MovieList = ({title , movies})=>{
     
     return (
@@ -9,7 +10,7 @@ const MovieList = ({title , movies})=>{
                     <div className="flex gap-8 flex-row ">
                         {movies && movies.length>0?(movies.map((movie)=>(
                             <MovieCard key={movie.id} movieData={movie} />
-                        ))):<img src="https://i.pinimg.com/originals/a2/de/bf/a2debfb85547f48c3a699423ba75f321.gif"></img>}
+                        ))):<Shimmer/>}
                 </div>
             </div>
         </div>

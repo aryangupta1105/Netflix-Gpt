@@ -21,3 +21,19 @@ export const YT_URL = "https://www.youtube.com/embed/";
 export const YT_URL_FEATURES = "?autoplay=1&mute=1&controls=0&modestbranding=1&disablekb=1&rel=0&iv_load_policy=3&loop=1";
 
 export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+
+
+export const supported_language = [
+  {identifier: "en" , name: "English"},
+  {identifier: "hi" , name: "हिंदी"},
+  {identifier: "espn" , name: "español"},
+  {identifier: "bn" , name: "Bengali"},
+  {identifier: "ta" , name: "Tamil"},
+  {identifier: "te" , name: "Telugu"},
+  {identifier: "mr" , name: "Marathi"},
+  {identifier: "fr" , name: "French"},
+  {identifier: "de" , name: "German"},
+  {identifier: "it" , name: "Italian"},
+  {identifier: "pt" , name: "Portugese"},
+  {identifier: "zh" , name: "Chinese"},
+]

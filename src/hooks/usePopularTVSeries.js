@@ -17,8 +17,7 @@ const usePopularTVSeries = ()=>{
         const data = await fetch('https://api.themoviedb.org/3/tv/popular?page=1', options);
         const json = await data.json();
         dispatch(addPopularTVSeries(json?.results));
-        console.log("popular tv series");
-        console.log(json.results);
+       
     }   
    
 }

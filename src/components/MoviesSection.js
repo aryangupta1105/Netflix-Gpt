@@ -5,8 +5,6 @@ const MoviesSection = ()=>{
     const movieData = useSelector((store)=>store.movies);
     const TVSeriesData = useSelector((store)=>store.TVSeries);
 
-    console.log("Movies section");
-    console.log(movieData?.UpcomingMovies);
     if(!movieData) return;
     return(
         <div className=" bg-black"> 

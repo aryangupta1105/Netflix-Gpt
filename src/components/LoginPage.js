@@ -4,7 +4,8 @@ import SignInContext from "../utils/SignInContext";
 import {checkValidData} from "../utils/Validate";
 import { signIn, signUp ,googleLogin } from "../utils/SignUpSignIn";
 import { googleLogo, loginPageImageUrl } from "../utils/constants";
-
+import lang from "../utils/languageConstants";
+import { useSelector } from "react-redux";
 
 const LoginPage = ()=>{
     const [isSignIn , setIsSignIn] = useState(false);
@@ -14,7 +15,8 @@ const LoginPage = ()=>{
     const toggleSignInForm = ()=>{
         setIsSignIn(!isSignIn);
         }
-        
+    
+    const preferredLanguage = useSelector((store)=>store.config.preferredLanguage);
 
     const name = useRef(null);
     const email = useRef(null);
@@ -56,24 +58,24 @@ const LoginPage = ()=>{
             </div>
             <form onSubmit={(e)=>e.preventDefault()} className=" h-fit absolute top-[15%] right-0 left-0 flex flex-col w-[30%] mx-auto bg-black p-10 px-16 bg-opacity-70 rounded-sm z-[11]">
 
-                <label for="email" className="text-3xl mb-8 text-white font-bold">{isSignIn?"Sign In" : "Sign Up"}</label>
+                <label for="email" className="text-3xl mb-8 text-white font-bold">{isSignIn?"Sign In" : `${lang[preferredLanguage].signUp}`}</label>
 
-                {!isSignIn?(<input type="text" ref={name} placeholder="Enter your name" id="name" name="name" className="p-3 w-full  mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400  qoutline-none bg-[#313434]"/>):null}
+                {!isSignIn?(<input type="text" ref={name} placeholder={lang[preferredLanguage].namePlaceholder} id="name" name="name" className="p-3 w-full  mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400  qoutline-none bg-[#313434]"/>):null}
 
                 <input type="text" ref={email}
-                 placeholder="Enter your email" id="email" name="Email" className="p-3 w-full mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>
+                 placeholder={lang[preferredLanguage].emailPlaceholder}id="email" name="Email" className="p-3 w-full mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>
 
                 <input type="password" ref={password}
-                placeholder="Enter your Password" name="Password" id="password" className="p-3 w-full  mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>
+                placeholder={lang[preferredLanguage].passwordPlaceholder} name="Password" id="password" className="p-3 w-full  mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>
                 <p className="text-orange-600 font-bold py-3 text-lg">{errorMessage}</p>
                 {/* Sign In / sign Up button */}
-                <button className="bg-red-600 w-full mt-12 p-2 rounded-sm hover:bg-red-800 transition-all duration-200  text-white mx-auto px-4 " onClick={handleButtonClick}>{isSignIn?"Sign In" : "Sign Up"}</button>
+                <button className="bg-red-600 w-full mt-12 p-2 rounded-sm hover:bg-red-800 transition-all duration-200  text-white mx-auto px-4 " onClick={handleButtonClick}>{isSignIn?"Sign In" :`${lang[preferredLanguage].signUp}`}</button>
 
                 {isSignIn?
                 (
                     <p className="text-md px-1 text-gray-300 mt-5">New to Netflix?<span className="hover:underline cursor-pointer text-white font-bold " onClick={toggleSignInForm}> Sign up now.</span></p>
                 )
-                :<p className="text-md px-1 text-gray-300 mt-5">Already a User?<span className="hover:underline cursor-pointer text-white font-bold " onClick={toggleSignInForm}> Sign In now.</span></p>}
+                :<p className="text-md px-1 text-gray-300 mt-5">{lang[preferredLanguage].alreadyAUser}<span className="hover:underline cursor-pointer text-white font-bold " onClick={toggleSignInForm}>{lang[preferredLanguage].signInLink}</span></p>}
 
                 {isSignIn?
                 (
