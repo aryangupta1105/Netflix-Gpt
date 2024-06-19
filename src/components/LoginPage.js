@@ -49,24 +49,24 @@ const LoginPage = ()=>{
 
         // Now we can sign up /sign In
     return(
-        <div className="relative  z-[11]" >
+        <div className="relative z-[11]  " >
             <SignInContext.Provider value= {{isSignIn:isSignIn , setIsSignIn}}>
                 <Header />
             </SignInContext.Provider>
             <div className="">  
-                <img src={loginPageImageUrl}></img>
+                <img src={loginPageImageUrl} className="w-screen h-screen fixed"></img>
             </div>
-            <form onSubmit={(e)=>e.preventDefault()} className=" h-fit absolute top-[15%] right-0 left-0 flex flex-col w-[30%] mx-auto bg-black p-10 px-16 bg-opacity-70 rounded-sm z-[11]">
+            <form onSubmit={(e)=>e.preventDefault()} className=" w-9/12 md:w-[40%] xl:w-[500px] md:my-32 my-[30%]  absolute top-[25%] right-0 left-0 flex flex-col  mx-auto bg-black py-10 md:px-16 px-8 bg-opacity-70 rounded-sm z-[11]">
 
-                <label for="email" className="text-3xl mb-8 text-white font-bold">{isSignIn?"Sign In" : `${lang[preferredLanguage].signUp}`}</label>
+                <label for="email" className="md:text-3xl text-xl md:mb-8 mb-4 text-white font-bold">{isSignIn?"Sign In" : `${lang[preferredLanguage].signUp}`}</label>
 
-                {!isSignIn?(<input type="text" ref={name} placeholder={lang[preferredLanguage].namePlaceholder} id="name" name="name" className="p-3 w-full  mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400  qoutline-none bg-[#313434]"/>):null}
+                {!isSignIn?(<input type="text" ref={name} placeholder={lang[preferredLanguage].namePlaceholder} id="name" name="name" className="p-3 w-full  mt-5 text-white md:text-lg  border border-gray-500  rounded-sm placeholder:text-gray-400  qoutline-none bg-[#313434]"/>):null}
 
                 <input type="text" ref={email}
-                 placeholder={lang[preferredLanguage].emailPlaceholder}id="email" name="Email" className="p-3 w-full mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>
+                 placeholder={lang[preferredLanguage].emailPlaceholder}id="email" name="Email" className="p-3 w-full mt-5 text-white md:text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>
 
                 <input type="password" ref={password}
-                placeholder={lang[preferredLanguage].passwordPlaceholder} name="Password" id="password" className="p-3 w-full  mt-5 text-white text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>
+                placeholder={lang[preferredLanguage].passwordPlaceholder} name="Password" id="password" className="p-3 w-full  mt-5 text-white md:text-lg border border-gray-500  rounded-sm placeholder:text-gray-400 outline-none bg-[#313434]"/>
                 <p className="text-orange-600 font-bold py-3 text-lg">{errorMessage}</p>
                 {/* Sign In / sign Up button */}
                 <button className="bg-red-600 w-full mt-12 p-2 rounded-sm hover:bg-red-800 transition-all duration-200  text-white mx-auto px-4 " onClick={handleButtonClick}>{isSignIn?"Sign In" :`${lang[preferredLanguage].signUp}`}</button>

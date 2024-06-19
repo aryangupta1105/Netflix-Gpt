@@ -73,8 +73,8 @@ const Header = ()=>{
 
 
     return(
-        <div className="absolute w-screen  px-8 py-2 bg-gradient-to-b from-black z-30" >
-            <div className="flex w-full mx-auto justify-between items-center">
+        <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-30" >
+            <div className="flex md:flex-row flex-col w-full mx-auto justify-between items-center">
                 <img src={Netflix_Logo} className="w-[190px]" loading="lazy"></img>
                {!isSignIn?(<div className="flex">
                     <div className="px-6 p-1 border bg-transparent rounded-sm  border-gray-400 text-white font-semibold">
@@ -88,8 +88,8 @@ const Header = ()=>{
             </div>):null}
                 
                 {user?(<div className="flex items-center ">
-                    {!gpt.showGPTSearch?(
-                         <button className="text-white mr-5 bg-black p-2 px-5 border rounded-lg hover:text-red-500 transition-all duration-800 hover:border-red-500 " onClick={handleGPTSearchClick}>Try GPT-Search</button>): <button className="text-white mr-5 bg-black p-2 px-5 border rounded-lg hover:text-red-500 transition-all duration-800 hover:border-red-500 " onClick={handleGPTSearchClick}>Go to HomePage</button>}
+                    
+                         <button className="text-white mr-5 bg-black p-2 px-5 border rounded-lg hover:text-red-500 transition-all duration-800 hover:border-red-500 " onClick={handleGPTSearchClick}>{!gpt.showGPTSearch?("Try GPT-Search") : ("Go to HomePage")}</button>
 
                     <img src={userIcon} alt="user-icon" className="h-12 w-12 rounded-full border border-black
                      bg-red-600 cursor-pointer" onClick={()=>setShowName(!showName)}></img>

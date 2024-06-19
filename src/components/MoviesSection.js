@@ -5,16 +5,16 @@ const MoviesSection = ()=>{
     const movieData = useSelector((store)=>store.movies);
     const TVSeriesData = useSelector((store)=>store.TVSeries);
 
-    
+
     if(!movieData) return;
     return(
-        <div className=" bg-black"> 
+        <div className=" bg-black pb-10"> 
             {/*Movies List
                 -Top Rated 
                  -Movie Cards * n
                 -Upcoming
                 -Now Playing  */}
-            <div className="overflow-hidden relative -mt-48 z-[50]">
+            <div className="overflow-hidden relative md:-mt-32  -mt-[90%] z-[50]">
                 <MovieList title={"Now Playing"} movies={movieData?.NowPlayingMovies}/>
                 <MovieList title={"Top Rated"} movies={movieData?.TopRatedMovies}/>
                 <MovieList title={"Trending"} movies={movieData?.PopularMovies}/>

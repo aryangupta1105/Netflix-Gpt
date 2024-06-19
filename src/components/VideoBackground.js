@@ -9,10 +9,10 @@ const VideoBackground = ({movie_id})=>{
     if(!trailer) return;
     
     return(
-        <div className=" w-screen h-[200%] ">
+        <div className=" w-screen md:-mt-5 -mt-[50%]">
         {trailer && trailer.length > 0 ? (
                 <iframe
-                className="w-screen h-screen border-none aspect-video"
+                className="w-screen h-screen p-0 border-none aspect-video"
                 src={YT_URL + trailer[0].key + YT_URL_FEATURES + "&playlist="    +trailer[0].key}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

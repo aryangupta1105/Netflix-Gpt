@@ -54,6 +54,7 @@
     Step 47: Learned about Memoization to save api calls
     Step 48: created env file to secure our api keys (paid for firebase)
     Step 49: Making our app responsive
+    Step 50: created our app to be responsive for all devices...
     
 
 

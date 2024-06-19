@@ -37,8 +37,11 @@ const GPTSearchBar = ()=>{
         // const gptMovies = gptResults.choices?.[0]?.message.content.split(", ");
         // const demogptResults = "Gadar, Sholay, Don, 3 idiots, Golmaal"
         
-        const demogptResults = `${gptSearchText.current.value}`;
-
+        let demogptResults = `${gptSearchText.current.value}`;
+        if(gptSearchText.current.value ==="" || gptSearchText.current.value === "funny indian retro movies"){
+            demogptResults = "Gadar, Sholay, Don, 3 idiots, Golmaal"
+        }
+        
         const gptMovies = demogptResults.split(", ");
         
         const PromiseArray = gptMovies.map((movie)=>getMovie(movie));
@@ -50,11 +53,11 @@ const GPTSearchBar = ()=>{
 
     return (
         <div className="px-10 ">
-            <h2 className=" text-center text-5xl w-8/12 mx-auto font-bold text-white opacity-80 ">Enhance Your Movie Experience with AI</h2>
-            <p className="text-center text-gray-400 pt-5 text-xl"> Netflix and chill with gpt!❤️</p>
-            <form className="flex p-4 px-6 m-6  text-white items-center justify-center" onSubmit={(e)=>e.preventDefault()}>  
-                <input type="text" ref={gptSearchText} className=" w-10/12 px-6 p-4 text-2xl outline-none  focus:bg-opacity-20 rounded-lg bg-white text-white shadow-xl placeholder:text-gray-300 bg-opacity-30 " placeholder="What would like to watch today?" ></input>
-                <button type="submit" className="bg-red-600 hover:bg-red-700 transition-all duration-200 p-5 px-6 rounded-lg mx-1 " onClick={handleGPTSearchClick}
+            <h2 className=" text-center md:text-5xl  md:w-8/12 w-11/12 text-4xl  mx-auto font-bold text-white opacity-80 ">Enhance Your Movie Experience with AI</h2>
+            <p className="text-center text-gray-400 pt-5 lg:text-xl text-lg"> Netflix and chill with gpt!❤️</p>
+            <form className="flex p-4 md:w-10/12 mx-auto w-full px-6 m-6  text-white items-center justify-center" onSubmit={(e)=>e.preventDefault() }>  
+                <input type="text" ref={gptSearchText} className=" w-10/12 px-6 p-4 md:text-2xl text-md outline-none  focus:bg-opacity-20 rounded-lg bg-white text-white shadow-xl placeholder:text-gray-300 bg-opacity-30 " placeholder="What would like to watch today?" ></input>
+                <button type="submit" className="bg-red-600 hover:bg-red-700 transition-all duration-200 md:p-[19.2px] md:text-md text-sm p-1 px-6 rounded-lg mx-1 " onClick={handleGPTSearchClick}
                 >Search<i class="fa-solid fa-magnifying-glass ml-3"></i></button>
             </form>
         </div>

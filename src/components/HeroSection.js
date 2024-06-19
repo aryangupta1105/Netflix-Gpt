@@ -11,7 +11,7 @@ const HeroSection = ()=>{
     const mainMovie = movies[0 ];
     const {original_title , overview , id} = mainMovie;
     return(
-        <div className="overflow-hidden ">
+        <div className="overflow-hidden">
             {/* 
                 -Video Background (comes from store)
                 -Video Title (scale on hover)...
