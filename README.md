@@ -132,4 +132,4 @@ Netflix-GPT is built using a modern tech stack that includes:
 
 ## 🚀 Demo
 
-You can see the live demo of the app [here](https://snegicodes-netflix.vercel.app).
+You can see the live demo of the app [here](https://netflixgpt-aryan.web.app/.)
