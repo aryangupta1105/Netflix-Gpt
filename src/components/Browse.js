@@ -15,6 +15,7 @@ const Browse = ()=>{
 
     useNowPlayingMovies();
     useUpcomingMovies();
+    useTopRatedMovies();
     usePopularMovies();
     usePopularTVSeries(); 
     return(

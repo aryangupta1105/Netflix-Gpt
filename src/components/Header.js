@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { Netflix_Logo , supported_language, userIcon } from "../utils/constants";
-import { toggleGPTSearch } from "../utils/gptSlice";
+import { clearMovieResults, toggleGPTSearch } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 import lang from "../utils/languageConstants";
 
@@ -21,6 +21,7 @@ const Header = ()=>{
 
     const handleGPTSearchClick = ()=>{
         dispatch(toggleGPTSearch());
+        dispatch(clearMovieResults());
     }
 
 
@@ -87,7 +88,8 @@ const Header = ()=>{
             </div>):null}
                 
                 {user?(<div className="flex items-center ">
-                    {!gpt.showGPTSearch?( <button className="text-white mr-5 bg-black p-2 px-5 border rounded-lg hover:text-red-500 transition-all duration-800 hover:border-red-500 " onClick={handleGPTSearchClick}>Try GPT-Search</button>): <button className="text-white mr-5 bg-black p-2 px-5 border rounded-lg hover:text-red-500 transition-all duration-800 hover:border-red-500 " onClick={handleGPTSearchClick}>Go to HomePage</button>}
+                    {!gpt.showGPTSearch?(
+                         <button className="text-white mr-5 bg-black p-2 px-5 border rounded-lg hover:text-red-500 transition-all duration-800 hover:border-red-500 " onClick={handleGPTSearchClick}>Try GPT-Search</button>): <button className="text-white mr-5 bg-black p-2 px-5 border rounded-lg hover:text-red-500 transition-all duration-800 hover:border-red-500 " onClick={handleGPTSearchClick}>Go to HomePage</button>}
 
                     <img src={userIcon} alt="user-icon" className="h-12 w-12 rounded-full border border-black
                      bg-red-600 cursor-pointer" onClick={()=>setShowName(!showName)}></img>

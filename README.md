@@ -47,6 +47,13 @@
     Step 40: Created GPT Search Bar
     Step 41: Created MultiLanguage Sign Up Page 
     Step 42: Integrating GPT Api in our app
+    Step 43: Integrated open ai api into our app 
+    Step 44: Generated results from user query
+    Step 45: Created Movie List with the help of results 
+    Step 46: created gpt slice which holds the movieList , movie Names etc
+    Step 47: Learned about Memoization to save api calls
+    Step 48: created env file to secure our api keys (paid for firebase)
+    Step 49: Making our app responsive
     
 
 

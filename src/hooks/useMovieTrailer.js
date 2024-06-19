@@ -7,9 +7,11 @@ const useMovieTrailer = (movie_id)=>{
     // Instead we can use redux store...
     // const [movieTrailer , setMovieTrailer] = useState(null);
     const dispatch = useDispatch();
+    const TrailerVideo = useSelector((store)=>store.movies.TrailerVideo);
     useEffect(()=>{
-        fetchMovieTrailer();
-    },[movie_id]);
+            !TrailerVideo && fetchMovieTrailer();
+        } , [movie_id]);
+    
 
     const fetchMovieTrailer = async()=>{
            try {

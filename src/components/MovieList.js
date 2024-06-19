@@ -10,7 +10,7 @@ const MovieList = ({title , movies})=>{
                     <div className="flex gap-8 flex-row ">
                         {movies && movies.length>0?(movies.map((movie)=>(
                             <MovieCard key={movie.id} movieData={movie} />
-                        ))):<Shimmer/>}
+                        ))):null}
                 </div>
             </div>
         </div>

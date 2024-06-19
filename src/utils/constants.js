@@ -1,3 +1,9 @@
+//  In firebase its paid...
+// export const TMDB_API_KEY = process.env.REACT_APP_TMDB_KEY;
+// export const TMDB_ACCESS_TOKEN = process.env.REACT_APP_TMDB_ACCESS_TOKEN;
+// export const openAi_api_key = process.env.REACT_APP_OPENAI_KEY
+
+
 export const Netflix_Logo = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
 
 export const userIcon = "https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png";
@@ -37,3 +43,7 @@ export const supported_language = [
   {identifier: "pt" , name: "Portugese"},
   {identifier: "zh" , name: "Chinese"},
 ]
+
+
+export const openAi_api_key = "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";
+export const openAi_api_key_akshay = "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";

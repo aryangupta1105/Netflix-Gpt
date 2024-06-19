@@ -1,13 +1,14 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPopularTVSeries } from "../utils/tvSeriesSlice";
 import { useEffect } from "react";
 import { options } from "../utils/constants";
 
 const usePopularTVSeries = ()=>{
        
-    useEffect(()=>{
-        getPopularTVSeries();
-    } , []);
+    const PopularTVSeries = useSelector((store)=>store.TVSeries.PopularTVSeries);
+        useEffect(()=>{
+            !PopularTVSeries && getPopularTVSeries();
+        } , []);
 
     const dispatch = useDispatch();
     

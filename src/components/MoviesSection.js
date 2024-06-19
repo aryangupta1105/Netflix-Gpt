@@ -5,6 +5,7 @@ const MoviesSection = ()=>{
     const movieData = useSelector((store)=>store.movies);
     const TVSeriesData = useSelector((store)=>store.TVSeries);
 
+    
     if(!movieData) return;
     return(
         <div className=" bg-black"> 
