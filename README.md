@@ -60,19 +60,7 @@ Netflix-GPT is built using a modern tech stack that includes:
 
 - **Huge Movie Database**: With integration to TMDB, NetflixGPT provides access to an extensive library of films from around the world.
 
-- **Multi Language Support**: Personalize your experience with language support for
-# Indian Languages:
-Hindi (hi): Previously provided.
-Bengali (bn): Added.
-Tamil (ta): Added.
-Telugu (te): Added.
-Marathi (mr): Added.
-# International Languages:
-French (fr): Added.
-German (de): Added.
-Italian (it): Added.
-Portuguese (pt): Added.
-Chinese (zh): Added.
+- **Multi Language Support**: Personalize your experience with language support for Hindi, English, and Spanish.
 
 - **Lightning-Fast Performance**: NetflixGPT is optimized with memoization, guaranteeing lightning-fast results.
 
