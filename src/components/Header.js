@@ -9,8 +9,8 @@ import { Netflix_Logo , supported_language, userIcon } from "../utils/constants"
 import { clearMovieResults, toggleGPTSearch } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 import lang from "../utils/languageConstants";
-
-
+import LogoImage from "../utils/image.png";
+        
 const Header = ()=>{
    const {isSignIn , setIsSignIn} = useContext(SignInContext);
    const[showName , setShowName] = useState(false);
